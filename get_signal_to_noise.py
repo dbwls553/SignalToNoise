@@ -62,11 +62,3 @@ def SNR(y_pred, target):
         raise Exception("ERROR: Not noisy")
     snr = 10 * log10(signal_power / noise_power)
     return snr
-
-
-
-test_source = './train_data/source/result_male.wav'
-test_target = './train_data/target/metro_male_orig.wav'
-ssnr = SSNR(test_source, test_target, 640)
-snr = SNR(test_source, test_target)
-print("ssnr = {}".format(ssnr), "snr = {}".format(snr), sep="\n")
