@@ -46,7 +46,7 @@ def begin():
 
         with open('log.txt', 'a') as f:
             f.write(str + "\n")
-
+    master.destroy()
 
 top_frame = tk.Frame(master)
 bottom_frame = tk.Frame(master)
