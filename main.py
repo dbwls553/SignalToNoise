@@ -27,15 +27,20 @@ else:
     if len(sys.argv) == 4:
         frame_size = int(sys.argv[3])
 
-for i in range(len(test_source_file_list)):
-    source = test_source_file_list[i]
-    target = test_target_file_list[i]
+    with open('log.csv', 'w') as csvfile:
+        csvfile.write("file name, ssnr(dB), snr(dB)\n")
 
-    ssnr = stn.SSNR(source, target, frame_size)
-    snr = stn.SNR(source, target)
+    for i in range(len(test_source_file_list)):
+        source = test_source_file_list[i]
+        target = test_target_file_list[i]
 
-    str = "{} | ssnr = {}dB | snr = {}dB".format(source, ssnr, snr)
-    print(str)
+        ssnr = stn.SSNR(source, target, frame_size)
+        snr = stn.SNR(source, target)
 
-    with open('log.txt', 'a') as f:
-        f.write(str + "\n")
+        str = "{} | ssnr = {}dB | snr = {}dB".format(source, ssnr, snr)
+        print(str)
+
+        with open('log.txt', 'a') as f:
+            f.write(str + "\n")
+        with open('log.csv', 'a') as csvfile:
+            csvfile.write("{}, {}, {}\n".format(source, ssnr, snr))
