@@ -53,7 +53,7 @@ def SSNR(y_pred, source, target, Frame_size):
 
     source_SSNR /= nonzero_frame_number
     y_pred_SSNR /= nonzero_frame_number
-    gain = y_pred_SSNR / source_SSNR
+    gain = y_pred_SSNR - source_SSNR
     return y_pred_SSNR, source_SSNR, gain
 
 def SNR(y_pred, source, target):
@@ -90,5 +90,5 @@ def SNR(y_pred, source, target):
 
     source_SNR = 10 * log10(signal_power / noise1_power)
     y_pred_SNR = 10 * log10(signal_power / noise2_power)
-    gain = y_pred_SNR / source_SNR
+    gain = y_pred_SNR - source_SNR
     return y_pred_SNR, source_SNR, gain
