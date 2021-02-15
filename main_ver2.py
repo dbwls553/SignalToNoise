@@ -32,7 +32,7 @@ else:
         frame_size = int(sys.argv[4])
 
     with open('log.csv', 'w') as csvfile:
-        csvfile.write("file name, ssnr(dB), , snr(dB), , gain, \n")
+        csvfile.write("file name, ssnr(dB), , snr(dB), , gain(dB), \n")
         csvfile.write(" , source, y_pred, source, y_pred, SSNR, SNR\n")
 
     for i in range(len(test_source_file_list)):
