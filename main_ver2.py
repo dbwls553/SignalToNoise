@@ -33,7 +33,7 @@ else:
 
     with open('log.csv', 'w') as csvfile:
         csvfile.write("file name, ssnr(dB), , snr(dB), , gain, \n")
-        csvfile.write(" , source, y_pred, source, y_pred, SNR, SSNR\n")
+        csvfile.write(" , source, y_pred, source, y_pred, SSNR, SNR\n")
 
     for i in range(len(test_source_file_list)):
         source = test_source_file_list[i]
@@ -43,11 +43,11 @@ else:
         y_pred_ssnr, source_ssnr , ssnr_gain= stn.SSNR(y_pred, source, target, frame_size)
         y_pred_snr, source_snr, snr_gain = stn.SNR(y_pred, source, target)
 
-        str = "{} | source_ssnr = {}dB | y_pred_ssnr = {}dB | source_snr = {}dB | y_pred_snr = {}dB | SNR_gain = {}dB | SSNR_gain = {}dB"\
-            .format(source, source_ssnr, y_pred_ssnr, source_snr, y_pred_snr, snr_gain, ssnr_gain)
+        str = "{} | source_ssnr = {}dB | y_pred_ssnr = {}dB | source_snr = {}dB | y_pred_snr = {}dB | SSNR_gain = {}dB | SNR_gain = {}dB"\
+            .format(source, source_ssnr, y_pred_ssnr, source_snr, y_pred_snr, ssnr_gain, snr_gain)
         print(str)
 
         with open('log.txt', 'a') as f:
             f.write(str + "\n")
         with open('log.csv', 'a') as csvfile:
-            csvfile.write("{}, {}, {}, {}, {}, {}, {}\n".format(source, source_ssnr, y_pred_ssnr, source_snr, y_pred_snr, snr_gain, ssnr_gain))
+            csvfile.write("{}, {}, {}, {}, {}, {}, {}\n".format(source, source_ssnr, y_pred_ssnr, source_snr, y_pred_snr, ssnr_gain, snr_gain))
